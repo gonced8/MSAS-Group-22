@@ -1,7 +1,7 @@
 clear
 close all
 
-speed = 1000000;
+speed = 10000;
 
 par.Ra = 6378.16;           % [km]
 par.Rb = 6356.778;          % [km]
