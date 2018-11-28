@@ -1,7 +1,7 @@
 clear
 close all
 
-speed = 10000;
+speed = 100000;
 
 par.Ra = 6378.16;           % [km]
 par.Rb = 6356.778;          % [km]
@@ -16,15 +16,15 @@ par.J2 = 0.00108263;
 
 h0 = 254.9;                 % [km]
 
-a0 = par.R+h0;              
 e0 = 0.0045;                % Singularity for e=0
+a0 = (par.Ra+h0)/(1-e0);              
 i0 = deg2rad(90);           % [rad] Singularity for i=0
 Omega0 = 0;
 w0 = 0;
 f0 = 0;                     % body starts at periapsis
 
 X0 = [a0; e0; i0; Omega0; w0; f0];
-tf = 2*ceil(2*pi/sqrt(par.u/a0^3));
+tf = 2*ceil(4*pi/sqrt(par.u/a0^3));
 tspan = [0, tf];
 options = odeset('AbsTol', 1e-9, 'RelTol', 1e-6, 'MaxStep', speed);
 
