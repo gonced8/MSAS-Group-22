@@ -22,7 +22,7 @@ function [Y, parout] = orbit(t, X, parin, data)
     ah = aJ2(2) + ad(2);
     an = aJ2(3) + ad(3);
     
-    parout = [D, h, r, R, H, v];
+    parout = [D, h, r, H, v];
     
     da = 2*a^2*v/data.u*at;
     de = 1/v*(2*(e+cos(f))*at-r/a*sin(f)*an);

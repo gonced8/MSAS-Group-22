@@ -12,7 +12,7 @@ data.orbit.J2 = 0.00108263;
 data.orbit.h0 = 254.9;                 % [km]
 
 data.orbit.e0 = 0.0045;                % Singularity for e=0
-data.orbit.a0 = (data.orbit.Ra+h0)/(1-e0);              
+data.orbit.a0 = (data.orbit.Ra+data.orbit.h0)/(1-data.orbit.e0);              
 data.orbit.i0 = deg2rad(90);           % [rad] Singularity for i=0
 data.orbit.Omega0 = 0;
 data.orbit.w0 = 0;

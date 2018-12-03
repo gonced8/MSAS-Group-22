@@ -1,4 +1,4 @@
-function [Y, parout] = accel(t, X, acc, parin)
+function [Y, parout] = accel(t, X, parin, acc)
     % States of the system 
     x = X(1);
     v = X(2);
@@ -17,9 +17,9 @@ function [Y, parout] = accel(t, X, acc, parin)
 %     Cd = m_goce/(BC*A_goce);
 % 
 %     rho_orb = 7.35e-11;
-
-    % D_i = 0.5*Cd*rho_orb*v_c^2*A_goce;
-    % T_i = D_i*0.9;
+% 
+%     D_i = 0.5*Cd*rho_orb*v_c^2*A_goce;
+%     T_i = D_i*0.9;
 
     % if t <= 5
     %     D = D_i;

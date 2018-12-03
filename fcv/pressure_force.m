@@ -1,6 +1,6 @@
-function f = pressure_force(x, data)
+function f = pressure_force(x, p_star, As)
     if x>0
-        f = data.xenon.p_star*data.As;
+        f = p_star*As;
     else
         f = 0;
     end
