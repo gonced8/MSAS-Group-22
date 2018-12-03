@@ -1,0 +1,19 @@
+data.orbit.Ra = 6378.16;           % [km]
+data.orbit.Rb = 6356.778;          % [km]
+data.orbit.R = (data.orbit.Ra+data.orbit.Rb)/2;  % [km]
+data.orbit.u = 3.986e5;            % [km^3/s^2]
+data.orbit.tol = 1e-6;             % tolerance in altitude determination newton method
+data.orbit.m = 300;                % [kg]
+data.orbit.A = 1.1;                % [m^2]
+data.orbit.B = 300;                % ballistic coefficient
+data.orbit.Cd = data.orbit.m/(data.orbit.A*data.orbit.B);   % Drag coefficient
+data.orbit.J2 = 0.00108263;        
+
+h0 = 254.9;                 % [km]
+
+e0 = 0.0045;                % Singularity for e=0
+a0 = (data.orbit.Ra+h0)/(1-e0);              
+i0 = deg2rad(90);           % [rad] Singularity for i=0
+Omega0 = 0;
+w0 = 0;
+f0 = 0;                     % body starts at periapsis
