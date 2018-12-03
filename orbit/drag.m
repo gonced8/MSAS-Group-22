@@ -1,4 +1,4 @@
-function a = drag(v, H, par)
+function [a, D] = drag(v, H, par)
     rho = density(H);
     D = 0.5*rho*v^2*par.A*par.Cd;
     
@@ -9,5 +9,7 @@ function a = drag(v, H, par)
     an = 0;
     
     a = [at; ah; an];
+    
+    D = D*(1e3)^2;
 end
 

@@ -9,6 +9,8 @@ data.fcv.c = 30;                        % Ns/m
 data.fcv.F0 = 10;                       % N
 data.fcv.d = sqrt(4*data.fcv.A/pi);
 
+data.fcv.As = 1e-5;                     % m^2
+
 %%%%%%%%%%%%%%%%%%%%%%%%%% XENON %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 data.fcv.xenon.p0 = 2e5;   % Pa
@@ -30,3 +32,7 @@ data.fcv.xenon.v_star = data.fcv.xenon.M*data.fcv.xenon.a_star; % velocity at th
 data.fcv.xenon.R = data.fcv.d/2; % radius
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+data.fcv.Vi0 = 0;
+data.fcv.x0 = 0;
+data.fcv.v0 = 0;

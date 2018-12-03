@@ -9,8 +9,14 @@ data.accel.Vbias = 15;                 %[V]   bias voltage
 data.accel.Cf = 2e-12;                 %[F]   positive feedback capacitor
 data.accel.C = data.accel.e*data.accel.A/(2*data.accel.g);
 
+data.accel.m_goce = 300;
+
 % Optimizable 
 data.accel.kp = 1e6;                   %[]    controller proportional gain
 data.accel.kd = 5e4;                   %[]    controller derivative gain
 
 %------------------------------------%
+
+data.accel.x0 = 0;
+data.accel.v0 = 0;
+data.accel.Vout = 0;

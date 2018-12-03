@@ -1,4 +1,4 @@
-function Y = orbit(t, X, par)
+function [Y, parout] = orbit(t, X, parin, data)
     a = X(1);
     e = X(2);
     i = X(3);
@@ -6,23 +6,25 @@ function Y = orbit(t, X, par)
     w = X(5);
     f = X(6);
     
-    h = sqrt(par.u*a*(1-e^2));
+    T = parin(1);
+    
+    h = sqrt(data.u*a*(1-e^2));
     r = a*(1-e^2)/(1+e*cos(f));
     R = get_R(X);
-    H = get_altitude(X, par);
-    v = sqrt(2*par.u*(1/r-1/(2*a)));
-    V = get_V(X, par);
+    H = get_altitude(X, data);
+    v = sqrt(2*data.u*(1/r-1/(2*a)));
+    V = get_V(X, data);
     
-    aJ2 = J2_perturbation(r, R, V, par);
-    ad = drag(v, H, par);
+    aJ2 = J2_perturbation(r, R, V, data);
+    [ad, D] = drag(v, H, data);
+        
+    at = aJ2(1) + ad(1) + T/data.m;
+    ah = aJ2(2) + ad(2);
+    an = aJ2(3) + ad(3);
     
-    acc = aJ2+ad;
+    parout = [D, h, r, R, H, v];
     
-    at = acc(1);
-    ah = acc(2);
-    an = acc(3);
-    
-    da = 2*a^2*v/par.u*at;
+    da = 2*a^2*v/data.u*at;
     de = 1/v*(2*(e+cos(f))*at-r/a*sin(f)*an);
     di = r*cos(w+f)/h*ah;
     dOmega = r*sin(w+f)/(h*sin(i))*ah;
