@@ -1,0 +1,24 @@
+clc, clear, close all
+
+data_fcv;
+
+% parameters
+t = linspace(0,5000,100);
+
+% Input
+V0 = 6e-4;         % volt
+
+% Initial condition
+x0 = [0,0,0];
+% Integration
+options = odeset('Reltol',2.5e-4,'AbsTol',2.5e-5,'OutputFcn',@odeplot,'Stats','on');
+
+start = tic;
+[tt,ff] = ode113(@fcv,[t(1) t(end)],x0,options,data,V0);
+time = toc(start)
+
+figure;
+plot (tt,ff(:,2));
+
+figure;
+plot (tt,ff(:,3));
