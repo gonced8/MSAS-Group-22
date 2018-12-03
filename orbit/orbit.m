@@ -18,7 +18,7 @@ function [Y, parout] = orbit(t, X, parin, data)
     aJ2 = J2_perturbation(r, R, V, data);
     [ad, D] = drag(v, H, data);
         
-    at = aJ2(1) + ad(1) + T/data.m;
+    at = aJ2(1) + ad(1) + T*(1e-3)/data.m;
     ah = aJ2(2) + ad(2);
     an = aJ2(3) + ad(3);
     

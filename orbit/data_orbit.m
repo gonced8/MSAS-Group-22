@@ -17,3 +17,5 @@ data.orbit.i0 = deg2rad(90);           % [rad] Singularity for i=0
 data.orbit.Omega0 = 0;
 data.orbit.w0 = 0;
 data.orbit.f0 = 0;                     % body starts at periapsis
+
+data.orbit.T = ceil(4*pi*sqrt(data.orbit.a0^3/data.orbit.u));      % [s]

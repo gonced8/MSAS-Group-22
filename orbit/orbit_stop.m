@@ -1,4 +1,4 @@
-function [position,isterminal,direction] = orbit_stop(t, X, par)
+function [position,isterminal,direction] = orbit_stop(t, X, ~, par)
     a = X(1);
     e = X(2);
     i = X(3);

@@ -5,8 +5,8 @@ data_orbit;
 
 speed = 100000;
 
-X0 = [a0; e0; i0; Omega0; w0; f0];
-tf = 2*ceil(4*pi/sqrt(data.orbit.u/a0^3));
+X0 = [data.orbit.a0; data.orbit.e0; data.orbit.i0; data.orbit.Omega0; data.orbit.w0; data.orbit.f0];
+tf = 2*ceil(4*pi/sqrt(data.orbit.u/data.orbit.a0^3));
 tspan = [0, tf];
 options = odeset('AbsTol', 1e-9, 'RelTol', 1e-6, 'MaxStep', speed);
 
@@ -17,7 +17,7 @@ end
 
 tic;
 disp('Simulation started');
-[t, X] = ode113(@orbit, tspan, X0, options, data.orbit);
+[t, X] = ode113(@orbit, tspan, X0, options, 0, data.orbit);
 disp('Simulation ended');
 toc
 

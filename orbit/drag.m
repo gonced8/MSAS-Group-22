@@ -10,6 +10,6 @@ function [a, D] = drag(v, H, par)
     
     a = [at; ah; an];
     
-    D = D*(1e3)^2;
+    D = D*(1e3)^2;      % km/s -> m/s
 end
 

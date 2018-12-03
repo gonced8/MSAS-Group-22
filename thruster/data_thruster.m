@@ -1,6 +1,7 @@
-data.thruster.q = 1.6e-19;
-data.thruster.M = 2.188e-25;
-data.thruster.Vb = 2000;
+data.xenon.q = 1.6e-19;
+data.xenon.Mx = 2.188e-25;
+data.xenon.Vb = 2e3;
+data.xenon.vi = sqrt(2*data.xenon.q*data.xenon.Vb/data.xenon.Mx);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% XENON %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
