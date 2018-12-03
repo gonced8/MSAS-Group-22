@@ -17,7 +17,7 @@ v_dot = 1/par.m*(par.Ki*i-par.c*v-par.K*x-par.F0);
 
 v_dot = correct_v(v_dot, x, par.d);
 
-A_star =  par.xenon.R^2*acos((par.xenon.R-x)/par.xenon.R)-(par.xenon.R-x)*sqrt(2*par.xenon.R*x-x^2); % -> need input x
+A_star = compute_A(x, 2*par.xenon.R);
 m_dot = par.xenon.rho_star*A_star*par.xenon.v_star; % kg/s xenon mass flow rate 
 
 parout = [A_star, m_dot];
