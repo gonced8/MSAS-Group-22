@@ -10,7 +10,7 @@ function [Y, parout] = fcv(t, X, parin, data, data_x)
     f = 0;
 
     parout = [i, f];
-
+    
     Vi_dot = V0;
     x_dot = v;
     v_dot = 1/data.m*(data.Ki*i  - data.c*v - data.K*x - data.F0 + f);

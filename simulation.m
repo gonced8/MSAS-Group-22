@@ -27,7 +27,7 @@ X0 = [X0_orbit;
       X0_accel;
       X0_fcv];
 
-tspan = 0.01*data.orbit.T;
+tspan = 10*data.orbit.T;
 options = odeset('AbsTol', 1e-8, 'RelTol', 1e-6);
 
 start = tic;
@@ -118,6 +118,10 @@ title('i fcv');
 figure;
 plot(t, v_fcv);
 title('v fcv');
+
+figure;
+plot(t, Vi);
+title('Vi');
 
 
 

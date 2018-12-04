@@ -2,10 +2,10 @@ function [Y, parout] = model(t, X, data)
     X_orbit = X(1:6);
     X_acc = X(7:9);
     X_fcv = X(10:12);
-    
+     
     X_fcv(2) = correct_x(X_fcv(2), data.fcv.d);
     X_fcv(3) = correct_v(X_fcv(3), X_fcv(2), data.fcv.d);
-        
+    
     x_fcv = X_fcv(2);
     par_thruster = thruster(x_fcv,  data.xenon);
     T = par_thruster(3);
@@ -21,7 +21,7 @@ function [Y, parout] = model(t, X, data)
     Y = [Y_orbit;
          Y_accel;
          Y_fcv];
-     
-     parout = [par_thruster, par_orbit, par_accel, par_fcv];
+
+    parout = [par_thruster, par_orbit, par_accel, par_fcv];
 end
 
