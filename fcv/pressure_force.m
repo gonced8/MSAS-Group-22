@@ -1,8 +1,8 @@
-function f = pressure_force(x, p_star, As)
+function f = pressure_force(x, data)
     if x>0
-        f = p_star*As;
+        f = data.p_star*data.width*data.depth;
     else
-        f = 0;
+        f = data.p0*data.width*data.depth/2;
     end
 end
 

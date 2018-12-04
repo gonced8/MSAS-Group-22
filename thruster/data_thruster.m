@@ -21,5 +21,6 @@ data.xenon.M = 1;     % mach number at the throat
 
 data.xenon.v_star = data.xenon.M*data.xenon.a_star; % velocity at the throat
 
-data.xenon.A0 = 1e-5;
-data.xenon.d0 = 2*sqrt(data.xenon.A0/pi);
+data.xenon.depth=1e-5; %depth of valve along flow direction
+%Duct
+data.xenon.width=1e-8; %width of duct in which xenon flows

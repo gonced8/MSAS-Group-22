@@ -20,7 +20,7 @@ function [Y, parout] = accel(t, X, parin, acc)
 
     % ODEs
     dx = v;
-    dv = (1/acc.m_goce)*(D - T) + a1 + a2 - acc.c*v;
+    dv = (1/acc.m_goce)*(D - T) + a1 + a2 - acc.k/acc.m*x - acc.c*v;
     dVout = v/(1+acc.kp*acc.C/acc.Cf)*(C2/acc.Cf*(Vc+acc.Vbias)/(acc.g+x)-C1/acc.Cf*(Vc-acc.Vbias)/(acc.g-x));
 
     Y = [dx;

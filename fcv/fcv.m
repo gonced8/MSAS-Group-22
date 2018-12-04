@@ -6,8 +6,7 @@ function [Y, parout] = fcv(t, X, parin, data, data_x)
     V0 = parin(1);
 
     i = data.kp*V0+data.ki*Vi;
-    f = pressure_force(x, data_x.p_star, data.As);
-    f = 0;
+    f = pressure_force(x, data_x);
 
     parout = [i, f];
     

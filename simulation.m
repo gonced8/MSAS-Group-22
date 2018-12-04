@@ -28,7 +28,7 @@ X0 = [X0_orbit;
       X0_fcv];
 
 tspan = 10*data.orbit.T;
-options = odeset('AbsTol', 1e-8, 'RelTol', 1e-6);
+options = odeset('AbsTol', 1e-9, 'RelTol', 1e-7);
 
 start = tic;
 disp('Simulation started');
