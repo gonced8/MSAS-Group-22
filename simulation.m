@@ -124,5 +124,17 @@ figure;
 plot(t, Vi);
 title('Vi');
 
+figure;
+plot(t, v_acc);
+title('vacc');
 
+figure;
+plot(t, w);
+title('w');
+
+figure;
+plot(t, e);
+title('e');
+
+speed = 100000;
 
