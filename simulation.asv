@@ -57,7 +57,7 @@ e = X(:, 2);            % eccentricity
 i = X(:, 3);            % inclination
 Omega = X(:, 4);        % right assenction
 w = X(:, 5);            % declination
-f = X(:, 6);            % ---
+f = X(:, 6);            % --
 
 x_acc = X(:, 7);        % position of the mass in the accelerometer
 v_acc = X(:, 8);        % velocity of the mass in the accelerometer
@@ -69,7 +69,7 @@ v_fcv = X(:, 12);       % velocity of the spool
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%% Parameters %%%%%%%%%%%%%
-mdot = parout(:, 1);  % mass flow rate of the xenon
+mdot = parout(:, 1);
 Ib = parout(:, 2);
 T = parout(:, 3);
 

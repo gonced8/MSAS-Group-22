@@ -1,7 +1,8 @@
+% Data of the flow control valve
 %%%%%%%%%%%%%%%%%%%%%%%%%%% FCV DATA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 data.fcv.A = 1e-5;                      % m^2
 data.fcv.m = 2e-1;                      % kg
-data.fcv.Ki = 2; % 0.2;                      % N/A
+data.fcv.Ki = 2; % 0.2;                 % N/A
 data.fcv.kp = 0.1;                      %
 data.fcv.ki = 3;                        %
 data.fcv.K = 7e2;                       % N/m
