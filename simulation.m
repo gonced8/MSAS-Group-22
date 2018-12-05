@@ -136,5 +136,9 @@ figure;
 plot(t, e);
 title('e');
 
+figure;
+plot(t, a1+a2);
+title('a1+a2');
+
 speed = 100000;
 
