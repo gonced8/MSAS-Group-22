@@ -86,8 +86,8 @@ Vc = parout(:, 11);
 a1 = parout(:, 12);
 a2 = parout(:, 13);
 
-i = parout(:, 14);
-f = parout(:, 15);
+i_fcv = parout(:, 14);
+f_fcv = parout(:, 15);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 figure; hold on;
@@ -113,7 +113,7 @@ plot(t, H);
 title('orbit height');
 
 figure;
-plot(t, i);
+plot(t, i_fcv);
 title('i fcv');
 
 figure;
