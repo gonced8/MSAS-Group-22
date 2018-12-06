@@ -133,12 +133,13 @@ plot(t, w);
 title('w');
 
 figure;
+plot(t, Omega);
+title('Omega');
+
+figure;
 plot(t, e);
 title('e');
 
 figure;
 plot(t, a1+a2);
 title('a1+a2');
-
-speed = 100000;
-

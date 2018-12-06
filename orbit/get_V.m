@@ -17,11 +17,11 @@ function VV = get_V(X, par)
     h = sqrt(par.u*a*(1-e^2));
     r = a*(1-e^2)/(1+e*cos(f));
 
-    vr = par.u/h*e*sin(f);
-    vt = h/r;
-    vz = 0;
+    vp = -par.u/h*sin(f);
+    vq = par.u/h*(e+cos(f));
+    vw = 0;
     
-    v = [vr; vt; vz];
+    v = [vp; vq; vw];
      
     VV = R3(-Omega)*R1(-i)*R3(-w)*v;
 end

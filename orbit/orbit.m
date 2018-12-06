@@ -19,10 +19,10 @@ function [Y, parout] = orbit(t, X, parin, data)
     [ad, D] = drag(v, H, data);
     
     at = aJ2(1) + ad(1) + T*(1e-3)/data.m;
-    ah = aJ2(2) + ad(2);
-    an = aJ2(3) + ad(3);
+    an = aJ2(2) + ad(2);
+    ah = aJ2(3) + ad(3);
     
-    parout = [D, h, r, H, v];
+    parout = [D, h, r, H, v, R.'];
     
     da = 2*a^2*v/data.u*at;
     de = 1/v*(2*(e+cos(f))*at-r/a*sin(f)*an);
