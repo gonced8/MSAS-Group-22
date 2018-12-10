@@ -3,7 +3,11 @@ function [Y, parout] = accel(t, X, parin, acc)
     x = X(1);
     v = X(2);
     Vout = X(3);
-
+    
+    if t > 3600 && t < 3700
+         v = 0;
+    end
+    
     T = parin(1);
     D = parin(2);
 
@@ -22,9 +26,10 @@ function [Y, parout] = accel(t, X, parin, acc)
     dx = v;
     dv = (1/acc.m_goce)*(D - T) + a1 + a2 - acc.k/acc.m*x - acc.c*v;
     dVout = v/(1+acc.kp*acc.C/acc.Cf)*(C2/acc.Cf*(Vc+acc.Vbias)/(acc.g+x)-C1/acc.Cf*(Vc-acc.Vbias)/(acc.g-x));
-
+    
     Y = [dx;
          dv;
          dVout];
+    
 end
 
