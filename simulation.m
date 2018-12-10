@@ -27,8 +27,9 @@ X0 = [X0_orbit;
       X0_accel;
       X0_fcv];
 
-tspan = 10*data.orbit.T;
-options = odeset('AbsTol', 1e-9, 'RelTol', 1e-7,'OutputFcn',@odeplot,'Stats','on');
+%tspan = 1*data.orbit.T;
+tspan = 24*3600;
+options = odeset('AbsTol', 1e-8, 'RelTol', 1e-6);
 
 start = tic;
 disp('Simulation started');
@@ -85,8 +86,8 @@ Vc = parout(:, 11);
 a1 = parout(:, 12);
 a2 = parout(:, 13);
 
-i = parout(:, 14);
-f = parout(:, 15);
+i_fcv = parout(:, 14);
+f_fcv = parout(:, 15);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 figure; hold on;
@@ -112,7 +113,7 @@ plot(t, H);
 title('orbit height');
 
 figure;
-plot(t, i);
+plot(t, i_fcv);
 title('i fcv');
 
 figure;
@@ -123,5 +124,22 @@ figure;
 plot(t, Vi);
 title('Vi');
 
+figure;
+plot(t, v_acc);
+title('vacc');
 
+figure;
+plot(t, w);
+title('w');
 
+figure;
+plot(t, Omega);
+title('Omega');
+
+figure;
+plot(t, e);
+title('e');
+
+figure;
+plot(t, a1+a2);
+title('a1+a2');

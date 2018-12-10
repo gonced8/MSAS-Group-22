@@ -13,8 +13,8 @@ function [Y, parout] = accel(t, X, parin, acc)
 
     Vc = acc.kp*Vout;
 
-    a1 = (1/acc.m)*C1*(Vc-acc.Vbias)*(0.5*(Vc-acc.Vbias)/(acc.g-x)+acc.kp/(1+acc.C/acc.Cf*acc.kp)*(C2/acc.Cf*(Vc+acc.Vbias)/(acc.g+x)-C1/acc.Cf*(Vc-acc.Vbias)/(acc.g-x)));
-    a2 = (1/acc.m)*C2*(Vc+acc.Vbias)*(-0.5*(Vc+acc.Vbias)/(acc.g+x)+acc.kp/(1+acc.C/acc.Cf*acc.kp)*(C2/acc.Cf*(Vc+acc.Vbias)/(acc.g+x)-C1/acc.Cf*(Vc-acc.Vbias)/(acc.g-x)));
+    a1 = -(1/acc.m)*C1*(Vc-acc.Vbias)*(0.5*(Vc-acc.Vbias)/(acc.g-x)+acc.kp/(1+acc.C/acc.Cf*acc.kp)*(C2/acc.Cf*(Vc+acc.Vbias)/(acc.g+x)-C1/acc.Cf*(Vc-acc.Vbias)/(acc.g-x)));
+    a2 = -(1/acc.m)*C2*(Vc+acc.Vbias)*(-0.5*(Vc+acc.Vbias)/(acc.g+x)+acc.kp/(1+acc.C/acc.Cf*acc.kp)*(C2/acc.Cf*(Vc+acc.Vbias)/(acc.g+x)-C1/acc.Cf*(Vc-acc.Vbias)/(acc.g-x)));
     
     parout = [C1, C2, Vc, a1, a2];
 

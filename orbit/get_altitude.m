@@ -20,6 +20,6 @@ function h = get_altitude(X, par)
     X0 = [x0; k];
     
     [X, ~] = newton(F, dF, X0, par.tol, 1000, false);
-    h = norm(P-X(1:3));     
+    h = norm(P-X(1:3));
 end
 
