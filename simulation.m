@@ -29,7 +29,7 @@ X0 = [X0_orbit;
 
 %tspan = 1*data.orbit.T;
 tspan = 24*3600;
-options = odeset('AbsTol', 1e-8, 'RelTol', 1e-6);
+options = odeset('AbsTol', 1e-8, 'RelTol', 1e-6, 'MaxStep', 5);
 
 start = tic;
 disp('Simulation started');
@@ -143,3 +143,22 @@ title('e');
 figure;
 plot(t, a1+a2);
 title('a1+a2');
+
+%%%%%%%%%%% Linearization %%%%%%%%%%%%
+
+x_rc = ref_condition(data);
+eigval = lin_model(x_rc, data);
+figure; hold on; grid on;
+plot(eigval,'*')
+title('Eigenvalues of linearized model around a reference condition');
+
+% Compute sensitivity to optimizable parameters
+
+% data2 = data;  % Copy, as to not change the original parameters
+
+    % Accelerometer parameters
+optim_acc = {'kp','c','k'};
+dif_acc_opt = sensiv('accel',optim_acc,x_rc,data);
+    % Flow control valve parameters
+optim_fcv = {'m','Ki','kp','ki'};
+dif_fcv_opt = sensiv('fcv',optim_fcv,x_rc,data);
