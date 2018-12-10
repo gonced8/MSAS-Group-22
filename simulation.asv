@@ -27,9 +27,8 @@ X0 = [X0_orbit;
       X0_accel;
       X0_fcv];
 
-%tspan = 1*data.orbit.T;
-tspan = 24*3600;
-options = odeset('AbsTol', 1e-8, 'RelTol', 1e-6, 'MaxStep', 5);
+tspan = 10*data.orbit.T;
+options = odeset('AbsTol', 1e-9, 'RelTol', 1e-7,'OutputFcn',@odeplot,'Stats','on');
 
 start = tic;
 disp('Simulation started');
@@ -58,7 +57,7 @@ e = X(:, 2);            % eccentricity
 i = X(:, 3);            % inclination
 Omega = X(:, 4);        % right assenction
 w = X(:, 5);            % declination
-f = X(:, 6);            % ---
+f = X(:, 6);            % --
 
 x_acc = X(:, 7);        % position of the mass in the accelerometer
 v_acc = X(:, 8);        % velocity of the mass in the accelerometer
@@ -70,7 +69,7 @@ v_fcv = X(:, 12);       % velocity of the spool
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%% Parameters %%%%%%%%%%%%%
-mdot = parout(:, 1);  % mass flow rate of the xenon
+mdot = parout(:, 1);
 Ib = parout(:, 2);
 T = parout(:, 3);
 
@@ -86,8 +85,8 @@ Vc = parout(:, 11);
 a1 = parout(:, 12);
 a2 = parout(:, 13);
 
-i_fcv = parout(:, 14);
-f_fcv = parout(:, 15);
+i = parout(:, 14);
+f = parout(:, 15);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 figure; hold on;
@@ -113,7 +112,7 @@ plot(t, H);
 title('orbit height');
 
 figure;
-plot(t, i_fcv);
+plot(t, i);
 title('i fcv');
 
 figure;
@@ -124,41 +123,5 @@ figure;
 plot(t, Vi);
 title('Vi');
 
-figure;
-plot(t, v_acc);
-title('vacc');
 
-figure;
-plot(t, w);
-title('w');
 
-figure;
-plot(t, Omega);
-title('Omega');
-
-figure;
-plot(t, e);
-title('e');
-
-figure;
-plot(t, a1+a2);
-title('a1+a2');
-
-%%%%%%%%%%% Linearization %%%%%%%%%%%%
-
-x_rc = ref_condition(data);
-eigval = lin_model(x_rc, data);
-figure; hold on; grid on;
-plot(eigval,'*')
-title('Eigenvalues of linearized model around a reference condition');
-
-% Compute sensitivity to optimizable parameters
-
-% data2 = data;  % Copy, as to not change the original parameters
-
-    % Accelerometer parameters
-optim_acc = {'kp','c','k'};
-dif_acc_opt = sensiv('accel',optim_acc,x_rc,data);
-    % Flow control valve parameters
-optim_fcv = {'m','Ki','kp','ki'};
-dif_fcv_opt = sensiv('fcv',optim_fcv,x_rc,data);

@@ -1,4 +1,5 @@
 function [Y, parout] = fcv(t, X, parin, data, data_x)
+% Function describing the behaviour of the flow control valve
     Vi = X(1);
     x  = X(2);
     v  = X(3);
