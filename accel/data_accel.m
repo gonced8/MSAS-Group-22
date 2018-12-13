@@ -14,11 +14,11 @@ data.accel.m_goce = 300;
 % Optimizable 
 data.accel.kp = 1e0; %1e6;                    %[]    controller proportional gain
 %data.accel.kd = 5e4;                    %[]    controller derivative gain
-data.accel.c = 1e0;
+data.accel.c = 0.2;
 data.accel.k = 1e-1;
 
 %------------------------------------%
 
 data.accel.x0 = 0;
 data.accel.v0 = 0;
-data.accel.Vout = 0;
+data.accel.Vout0 = 0;
