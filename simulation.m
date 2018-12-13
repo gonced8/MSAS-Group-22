@@ -3,29 +3,8 @@ close all
 
 addContainingDirAndSubDir()
 
-data_thruster;
-data_orbit;
-data_accel;
-data_fcv;
-
-X0_orbit = [data.orbit.a0; 
-            data.orbit.e0;
-            data.orbit.i0;
-            data.orbit.Omega0;
-            data.orbit.w0;
-            data.orbit.f0];
-        
-X0_accel = [data.accel.x0;
-            data.accel.v0;
-            data.accel.Vout];
-        
-X0_fcv = [data.fcv.Vi0;
-          data.fcv.x0;
-          data.fcv.v0];
-      
-X0 = [X0_orbit;
-      X0_accel;
-      X0_fcv];
+% Load data and X0
+initial_data;
 
 %tspan = 1*data.orbit.T;
 tspan = 24*3600;
@@ -144,21 +123,3 @@ figure;
 plot(t, a1+a2);
 title('a1+a2');
 
-%%%%%%%%%%% Linearization %%%%%%%%%%%%
-
-x_rc = ref_condition(data);
-eigval = lin_model(x_rc, data);
-figure; hold on; grid on;
-plot(eigval,'*')
-title('Eigenvalues of linearized model around a reference condition');
-
-% Compute sensitivity to optimizable parameters
-
-% data2 = data;  % Copy, as to not change the original parameters
-
-    % Accelerometer parameters
-optim_acc = {'kp','c','k'};
-dif_acc_opt = sensiv('accel',optim_acc,x_rc,data);
-    % Flow control valve parameters
-optim_fcv = {'m','Ki','kp','ki'};
-dif_fcv_opt = sensiv('fcv',optim_fcv,x_rc,data);
