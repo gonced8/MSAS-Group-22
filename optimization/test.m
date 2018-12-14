@@ -1,8 +1,5 @@
 function test(par)
-    data_thruster;
-    data_orbit;
-    data_accel;
-    data_fcv;
+    initial_data;
     
     data.accel.kp = par(1);
     data.accel.c = par(2);
@@ -11,25 +8,6 @@ function test(par)
     data.fcv.kp = par(5);
     data.fcv.ki = par(6);
 
-    X0_orbit = [data.orbit.a0; 
-                data.orbit.e0;
-                data.orbit.i0;
-                data.orbit.Omega0;
-                data.orbit.w0;
-                data.orbit.f0];
-        
-    X0_accel = [data.accel.x0;
-                data.accel.v0;
-                data.accel.Vout0];
-
-    X0_fcv = [data.fcv.Vi0;
-              data.fcv.x0;
-              data.fcv.v0];
-
-    X0 = [X0_orbit;
-          X0_accel;
-          X0_fcv];
-
     tspan = 2*data.orbit.T;
     %tspan = 24*3600;
     options = odeset('Events', @eventfcn, 'AbsTol', 1e-8, 'RelTol', 1e-6);
@@ -37,7 +15,7 @@ function test(par)
     start = tic;
     disp('Simulation started');
 
-    [t, X, ~, ~, ie] = ode15s(@model, [0 tspan], X0, options, data);
+    [t, X, ~, ~, ~] = ode15s(@model, [0 tspan], X0, options, data);
 
     disp('Simulation finished');
     toc(start)
