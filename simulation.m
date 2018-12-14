@@ -1,14 +1,14 @@
 clear
 close all
 
-addContainingDirAndSubDir()
+addContainingDirAndSubDir();
 
 % Load data and X0
 initial_data;
 
-%tspan = 1*data.orbit.T;
-tspan = 24*3600;
-options = odeset('AbsTol', 1e-8, 'RelTol', 1e-6, 'MaxStep', 5);
+tspan = 5*data.orbit.T;
+%tspan = 24*3600;
+options = odeset('AbsTol', 1e-8, 'RelTol', 1e-6);
 
 start = tic;
 disp('Simulation started');
@@ -58,68 +58,22 @@ h = parout(:, 5);
 r = parout(:, 6);
 H = parout(:, 7);
 v = parout(:, 8);
+R = parout(:, 9:11);
 
-C1 = parout(:, 9);
-C2 = parout(:, 10);
-Vc = parout(:, 11);
-a1 = parout(:, 12);
-a2 = parout(:, 13);
+C1 = parout(:, 12);
+C2 = parout(:, 13);
+Vc = parout(:, 14);
+a1 = parout(:, 15);
+a2 = parout(:, 16);
 
-i_fcv = parout(:, 14);
-f_fcv = parout(:, 15);
+i_fcv = parout(:, 17);
+f_fcv = parout(:, 18);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-figure; hold on;
-plot(t, D);
-plot(t, T);
-title('forces');
-legend('drag', 'thrust');
-
-figure;
-plot(t, Vout);
-title('Vout');
-
-figure;
-plot(t, x_fcv);
-title('x fcv');
-
-figure;
-plot(t, x_acc);
-title('x acc');
-
-figure;
-plot(t, H);
-title('orbit height');
-
-figure;
-plot(t, i_fcv);
-title('i fcv');
-
-figure;
-plot(t, v_fcv);
-title('v fcv');
-
-figure;
-plot(t, Vi);
-title('Vi');
-
-figure;
-plot(t, v_acc);
-title('vacc');
-
-figure;
-plot(t, w);
-title('w');
-
-figure;
-plot(t, Omega);
-title('Omega');
-
-figure;
-plot(t, e);
-title('e');
-
-figure;
-plot(t, a1+a2);
-title('a1+a2');
-
+%%%%%%%%%%% Plots %%%%%%%%%%%%%%%%%%%
+plot_graph('forces', t, X, parout);
+plot_graph('height', t, X, parout);
+plot_graph('x_acc', t, X, parout);
+plot_graph('x_fcv', t, X, parout);
+plot_graph('a1+a2', t, X, parout);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
