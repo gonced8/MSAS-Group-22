@@ -1,5 +1,4 @@
 function jacobian = jacob(f, x0, data)
-
     dim = length(f(0,x0,data));                        
     n_var = length(x0);                     
     jacobian = zeros(dim,n_var);
