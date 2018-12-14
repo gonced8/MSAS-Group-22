@@ -13,23 +13,7 @@ test(par);
 
 
 function [par, err] = optimize()    
-    data_thruster;
-    data_orbit;
-    data_accel;
-    data_fcv;
-    
-    X0 = [data.orbit.a0; 
-          data.orbit.e0;
-          data.orbit.i0;
-          data.orbit.Omega0;
-          data.orbit.w0;
-          data.orbit.f0;
-          data.accel.x0;
-          data.accel.v0;
-          data.accel.Vout0;
-          data.fcv.Vi0;
-          data.fcv.x0;
-          data.fcv.v0];
+    initial_data;
 
     tspan = 2*data.orbit.T;
     %tspan = 24*3600;
