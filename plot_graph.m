@@ -38,71 +38,63 @@ function plot_graph(name, t, X, parout)
     f_fcv = parout(:, 18);
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    a = figure;
     switch name
         case 'forces'
-            figure; hold on;
+            hold on;
             plot(t, D);
             plot(t, T);
             title('forces');
             legend('drag', 'thrust');
             
         case 'Vout'
-            figure;
             plot(t, Vout);
             title('Vout');
             
         case 'x_fcv'
-            figure;
             plot(t, x_fcv);
             title('x fcv');
             
         case 'x_acc'
-            figure;
             plot(t, x_acc);
             title('x acc');
 
         case 'height'
-            figure;
             plot(t, H);
             title('orbit height');
 
         case 'i_fcv'
-            figure;
             plot(t, i_fcv);
             title('i fcv');
 
         case 'v_fcv'
-            figure;
             plot(t, v_fcv);
             title('v fcv');
 
         case 'Vi'
-            figure;
             plot(t, Vi);
             title('Vi');
 
         case 'v_acc'
-            figure;
             plot(t, v_acc);
             title('vacc');
 
         case 'w'
-            figure;
             plot(t, w);
             title('w');
 
         case 'Omega'
-            figure;
             plot(t, Omega);
             title('Omega');
 
         case 'e'
-            figure;
             plot(t, e);
             title('e');
 
         case 'a1+a2'
-            figure;
             plot(t, a1+a2);
             title('a1+a2');
+        otherwise
+            close(a);
+            
     end

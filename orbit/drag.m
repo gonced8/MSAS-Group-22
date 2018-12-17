@@ -5,9 +5,9 @@ function [a, D] = drag(v, H, par)
     ad = (D*1e-3)/par.m;                           % [km/s^2]
     
     at = -ad;
-    ah = 0;
     an = 0;
+    ah = 0;
     
-    a = [at; ah; an];    
+    a = [at; an; ah];    
 end
 

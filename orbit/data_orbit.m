@@ -7,7 +7,8 @@ data.orbit.m = 300;                % [kg]
 data.orbit.A = 1.1;                % [m^2]
 data.orbit.B = 300;                % ballistic coefficient
 data.orbit.Cd = data.orbit.m/(data.orbit.A*data.orbit.B);   % Drag coefficient
-data.orbit.J2 = 0.00108263;        
+data.orbit.J2 = 0.00108263;   
+
 
 data.orbit.h0 = 254.9;                 % [km]
 

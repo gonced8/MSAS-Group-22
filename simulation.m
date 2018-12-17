@@ -76,4 +76,6 @@ plot_graph('height', t, X, parout);
 plot_graph('x_acc', t, X, parout);
 plot_graph('x_fcv', t, X, parout);
 plot_graph('a1+a2', t, X, parout);
+plot_graph('w', t, X, parout);
+plot_graph('Omega', t, X, parout);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

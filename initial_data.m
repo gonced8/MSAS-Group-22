@@ -14,7 +14,7 @@ X0_orbit = [data.orbit.a0;
         
 X0_accel = [data.accel.x0;
             data.accel.v0;
-            data.accel.Vout];
+            data.accel.Vout0];
         
 X0_fcv = [data.fcv.Vi0;
           data.fcv.x0;
