@@ -37,8 +37,9 @@ function plot_graph(name, t, X, parout)
     i_fcv = parout(:, 17);
     f_fcv = parout(:, 18);
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+    
     a = figure;
+    
     switch name
         case 'forces'
             hold on;
@@ -94,6 +95,7 @@ function plot_graph(name, t, X, parout)
         case 'a1+a2'
             plot(t, a1+a2);
             title('a1+a2');
+            
         otherwise
             close(a);
             
