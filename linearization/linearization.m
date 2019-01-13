@@ -13,9 +13,19 @@ data_fcv;
 
 x_rc = ref_condition(data);
 eigval = lin_model(@model, x_rc, data);
+
+disp('Eigenvalues:');
+disp(eigval);
+
 figure; hold on; grid on;
 plot(eigval,'*')
 title('Eigenvalues of linearized model around a reference condition');
+grid on;
+xlabel('$Re\{h\lambda\}$', 'Interpreter', 'latex');
+ylabel('$Im\{h\lambda\}$', 'Interpreter', 'latex');
+set(gca, 'XAxisLocation', 'origin');
+set(gca, 'YAxisLocation', 'origin');
+
 
 % Compute sensitivity to optimizable parameters
 
