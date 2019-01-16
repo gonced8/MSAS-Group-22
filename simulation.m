@@ -6,8 +6,8 @@ addContainingDirAndSubDir();
 % Load data and X0
 initial_data;
 
-tspan = 5*data.orbit.T;
-%tspan = 24*3600;
+tspan = 2*data.orbit.T;
+% tspan = 24*3600;
 options = odeset('AbsTol', 1e-8, 'RelTol', 1e-6);
 
 start = tic;
