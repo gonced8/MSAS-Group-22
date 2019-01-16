@@ -18,9 +18,18 @@ x_rc = X(end,:).';
 %%%%%%%%%%% Linearization %%%%%%%%%%%%
 
 eigval = lin_model(@model, x_rc, data);
+
+disp('Eigenvalues:');
+disp(eigval);
+
 figure; hold on; grid on;
 plot(eigval,'*')
-title('Eigenvalues of linearized model');
+title('Eigenvalues of linearized model around a reference condition');
+grid on;
+xlabel('$Re\{h\lambda\}$', 'Interpreter', 'latex');
+ylabel('$Im\{h\lambda\}$', 'Interpreter', 'latex');
+set(gca, 'XAxisLocation', 'origin');
+set(gca, 'YAxisLocation', 'origin');
 
 % Compute sensitivity to optimizable parameters
     % Study about how the eigenvalues change for changes in the parameters

@@ -6,6 +6,7 @@ addContainingDirAndSubDir();
 disp('Optimization started');
 start = tic;
 [par, err] = optimize();
+save('optimization/results_optimization.mat', 'par', '-v7.3');
 toc(start);
 disp('Optimization ended');
 
