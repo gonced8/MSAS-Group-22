@@ -22,7 +22,7 @@ simulation;
 
 
 %% System response - off-nominal conditions
-simulation_off;
+off_nominal;
 
 
 %% Optimization
