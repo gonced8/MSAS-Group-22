@@ -4,20 +4,26 @@ close all
 addContainingDirAndSubDir()
 
 % Load data 
-data_thruster;
-data_orbit;
-data_accel;
-data_fcv;
+initial_data;
+
+% Load reference nominal condition
+
+tspan = 3600;
+options = odeset('AbsTol', 1e-9, 'RelTol', 1e-8);
+
+[t, X] = ode15s(@model, [0 tspan], X0, options, data);
+
+x_rc = X(end,:).';
 
 %%%%%%%%%%% Linearization %%%%%%%%%%%%
 
-x_rc = ref_condition(data);
 eigval = lin_model(@model, x_rc, data);
 figure; hold on; grid on;
 plot(eigval,'*')
-title('Eigenvalues of linearized model around a reference condition');
+title('Eigenvalues of linearized model');
 
 % Compute sensitivity to optimizable parameters
+    % Study about how the eigenvalues change for changes in the parameters
 
     % Accelerometer parameters
 optim_acc = {'kp','c','k'};
