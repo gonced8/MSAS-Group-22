@@ -1,4 +1,4 @@
-function [Y, parout] = model(t, X, data, off)
+function [Y, parout] = model_off(t, X, data, cond)
     X_orbit = X(1:6);
     X_acc = X(7:9);
     X_fcv = X(10:12);
@@ -22,7 +22,7 @@ function [Y, parout] = model(t, X, data, off)
          Y_accel;
          Y_fcv];
     
-    Y = off_nominal_Y(Y, off.cond);
+    Y = off_nominal_Y(Y, cond);
 
     parout = [par_thruster, par_orbit, par_accel, par_fcv];
 end
