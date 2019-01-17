@@ -1,6 +1,6 @@
-% This script should be used to run the program. If you want to run a
-% particular script separately, first run the file
-% "addContainingDirAndSubDir.m", in order to add all the necessary paths.
+% André Oliveira, Ernest Constantine, Gonçalo Raposo
+%
+% This script should be used to run the program.
 
 clear
 close all
@@ -25,5 +25,5 @@ simulation;
 off_nominal;
 
 
-%% Optimization
+%% Optimization (about 13 min)
 optimization;

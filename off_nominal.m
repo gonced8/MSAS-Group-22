@@ -10,13 +10,12 @@ addContainingDirAndSubDir();
 % Load data and X0
 initial_data;
 
-tspan = 1000;
-%tspan = 1*data.orbit.T;
+tspan = 1*data.orbit.T;
 %tspan = 24*3600;
 options = odeset('AbsTol', 1e-8, 'RelTol', 1e-6);
 
 off.cond = ['1'; '2'];
-off.time = [300, 400];
+off.time = [3000, 4200];
 
 for j = 1:length(off.cond)
 
@@ -64,23 +63,23 @@ for j = 1:length(off.cond)
     disp('Calculation finished');
 
     states_parameters;      % get the variables form the X and parout arrays.
-
-    save_fig = true;
     
     %%%%%%%%%%% Plots %%%%%%%%%%%%%%%%%%%
-    plot_graph_off('forces', t, X, parout, off.time, off.cond(j));
-    if save_fig
-        saveas(gcf, sprintf('figs/off_nom%s_forces', off.cond(j)), 'epsc');
+    fig = figure;
+    hold on;
+
+    subplot(1, 2, 1);
+    plot_graph_off('forces', t, X, parout, off.time, off.cond(j), fig);
+    
+    subplot(1, 2, 2);
+    switch off.cond(j)
+        case '1'
+            plot_graph_off('x_acc', t, X, parout, off.time, off.cond(j), fig);
+        case '2'
+            plot_graph_off('x_fcv', t, X, parout, off.time, off.cond(j), fig);
     end
-    plot_graph_off('height', t, X, parout, off.time, off.cond(j));
-    plot_graph_off('x_acc', t, X, parout, off.time, off.cond(j));
-    if save_fig && off.cond(j)=='1'
-        saveas(gcf, sprintf('figs/off_nom%s_xacc', off.cond(j)), 'epsc');
-    end
-    plot_graph_off('x_fcv', t, X, parout, off.time, off.cond(j));
-    if save_fig && off.cond(j)=='2'
-        saveas(gcf, sprintf('figs/off_nom%s_xfcv', off.cond(j)), 'epsc');
-    end
+    
+    %saveas(gcf, sprintf('figs/off_nom%s', off.cond(j)), 'epsc');
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
 end

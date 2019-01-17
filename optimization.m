@@ -11,6 +11,7 @@ toc(start);
 disp('Optimization ended');
 
 test(par);
+% saveas(gcf, 'figs/optimization_results', 'epsc');
 
 
 function [par, err] = optimize() 
@@ -56,21 +57,24 @@ function [par, err] = optimize()
             data.fcv.kp;
             data.fcv.ki];
         
-    lb = [-inf;
-          0;
-          0;
-          0;
-          -inf;
-          -inf];
-      
-    ub = [inf;
-          data.accel.c;
-          inf;
-          10;
-          inf;
-          inf];
+%     lb = [-inf;
+%           0;
+%           0;
+%           0;
+%           -inf;
+%           -inf];
+%       
+%     ub = [inf;
+%           data.accel.c;
+%           inf;
+%           10;
+%           inf;
+%           inf];
+
+    lb = 0.1*par0;
+    ub = 10*par0;
     
-    optoptions = optimoptions('fmincon', 'Algorithm', 'active-set', 'StepTolerance', 1e-6, 'Display', 'iter');
+    optoptions = optimoptions('fmincon', 'Display', 'iter', 'Algorithm', 'active-set', 'StepTolerance', 1e-6, 'MaxFunctionEvaluations', 100);
     
     [par, err] = fmincon(@opt_fcn, par0, [], [], [], [], lb, ub, @nonlcon, optoptions);
     
