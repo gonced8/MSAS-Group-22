@@ -1,7 +1,7 @@
 % Use this function to plot the results of the simulation with off-nominal
 % conditions.
 
-function plot_graph_off(name, t, X, parout, tt, cond)
+function plot_graph_off(name, t, X, parout, tt, cond, fig)
     states_parameters;
     
     switch cond
@@ -12,18 +12,19 @@ function plot_graph_off(name, t, X, parout, tt, cond)
         otherwise
             cond = '';
     end
-    
-    
-    a = figure;
+       
+    figure(fig);
     hold on;
     
     switch name
         case 'forces'
-            plot(t, D, 'color', [0, 0.8, 0]);
-            plot([t(t<=tt(1)); nan; t(t>=tt(2))], [T(t<=tt(1)); nan; T(t>=tt(2))], 'b');
-            plot(t(t>=tt(1) & t<=tt(2)), T(t>=tt(1) & t<=tt(2)), 'r');
+            plot(t/3600, D, 'color', [0, 0.8, 0]);
+            plot([t(t<=tt(1))/3600; nan; t(t>=tt(2))/3600], [T(t<=tt(1)); nan; T(t>=tt(2))], 'b');
+            plot(t(t>=tt(1) & t<=tt(2))/3600, T(t>=tt(1) & t<=tt(2)), 'r');
             title(sprintf('forces (%s)', cond));
             legend('drag', 'thrust nominal', 'thrust off-nominal');
+            xlabel('t [h]');
+            ylabel('forces [N]');
             grid;
             
         case 'Vout'
@@ -34,17 +35,21 @@ function plot_graph_off(name, t, X, parout, tt, cond)
             grid;
             
         case 'x_fcv'
-            plot([t(t<=tt(1)); nan; t(t>=tt(2))], [x_fcv(t<=tt(1)); nan; x_fcv(t>=tt(2))], 'b');
-            plot(t(t>=tt(1) & t<=tt(2)), x_fcv(t>=tt(1) & t<=tt(2)), 'r');
+            plot([t(t<=tt(1))/3600; nan; t(t>=tt(2))/3600], [x_fcv(t<=tt(1)); nan; x_fcv(t>=tt(2))], 'b');
+            plot(t(t>=tt(1) & t<=tt(2))/3600, x_fcv(t>=tt(1) & t<=tt(2)), 'r');
             title(sprintf('x fcv (%s)', cond));
             legend('nominal', 'off-nominal');
+            xlabel('t [h]');
+            ylabel('x_{fcv} [m]');
             grid;
             
         case 'x_acc'
-            plot([t(t<=tt(1)); nan; t(t>=tt(2))], [x_acc(t<=tt(1)); nan; x_acc(t>=tt(2))], 'b');
-            plot(t(t>=tt(1) & t<=tt(2)), x_acc(t>=tt(1) & t<=tt(2)), 'r');
+            plot([t(t<=tt(1))/3600; nan; t(t>=tt(2))/3600], [x_acc(t<=tt(1)); nan; x_acc(t>=tt(2))], 'b');
+            plot(t(t>=tt(1) & t<=tt(2))/3600, x_acc(t>=tt(1) & t<=tt(2)), 'r');
             title(sprintf('x acc (%s)', cond));
             legend('nominal', 'off-nominal');
+            xlabel('t [h]');
+            ylabel('x_{acc} [m]');
             grid;
             
         case 'height'

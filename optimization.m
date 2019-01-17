@@ -11,6 +11,7 @@ toc(start);
 disp('Optimization ended');
 
 test(par);
+%saveas(gcf, 'figs/optimization_results', 'epsc');
 
 
 function [par, err] = optimize() 
