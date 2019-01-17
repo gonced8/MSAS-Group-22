@@ -6,8 +6,8 @@ addContainingDirAndSubDir();
 % Load data and X0
 initial_data;
 
-tspan = 5*data.orbit.T;
-% tspan = 24*3600;
+ tspan = 5*data.orbit.T;
+% tspan = 0.05*0.3*3600;
 options = odeset('AbsTol', 1e-8, 'RelTol', 1e-6);
 
 start = tic;
@@ -43,29 +43,4 @@ plot_graph('w', t, X, parout);
 plot_graph('Omega', t, X, parout);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-figure;
-subplot(2, 2, 1);
-plot(t/3600, H);
-title('Altitude of the spacecraft');
-xlabel('t [h]');
-ylabel('H [km]');
-grid;
-subplot(2, 2, 2);
-plot(t/3600, w);
-title('Argument of periapsis');
-xlabel('t [h]');
-ylabel('\omega [rad]');
-grid;
-subplot(2, 2, 3);
-plot(t/3600, a);
-title('Orbital semi-major axis');
-xlabel('t [h]');
-ylabel('a [km]');
-grid;
-subplot(2, 2, 4);
-plot(t/3600, e);
-title('Orbital eccentricity');
-xlabel('t [h]');
-ylabel('e');
-grid;
-% saveas(gcf, 'figs/orbit', 'epsc');
+sim_figs;
