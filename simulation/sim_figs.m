@@ -1,4 +1,4 @@
-
+%%%% Orbit plots %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 figure;
 subplot(2, 2, 1);
 plot(t/3600, H);
@@ -27,6 +27,7 @@ grid;
 %saveas(gcf, 'figs/orbit', 'epsc');
 
 
+%%%% Accelerometer plots %%%%%%%%%%%%%%%%%%%%%%%%%%%
 f_el = (a1 + a2)*data.accel.m; 
 ts = find(t>400, 1);
 
@@ -36,7 +37,7 @@ plot(t(1:ts), T(1:ts), t(1:ts), D(1:ts));
 title('Zoom - Forces acting on the spacecraft');
 xlabel('t [s]');
 ylabel('Force [N]');
-legend('Thrust','Drag');
+legend('Thrust','Drag', 'location', 'southeast');
 grid;
 subplot(4, 2, 2);
 plot(t(ts:end)/3600, T(ts:end), t(ts:end)/3600, D(ts:end));
@@ -83,6 +84,7 @@ ylabel('x_a [m]');
 grid;
 
 
+%%%% Flow control valve plots %%%%%%%%%%%%%%%%%%%%%%%%%%%
 ts = find(t>300, 1);
 figure;
 subplot(1,2,1);

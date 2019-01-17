@@ -51,7 +51,7 @@ function test(par)
         ylabel('force [N]');
         legend('drag', 'thrust', 'location', 'southeast');
         grid;
-        title(strcat('Drag and thrust ', titlestr{j+1}, ' otimization'));
+        title(sprintf('Drag and thrust %s optimization', titlestr{j+1}));
         
         subplot(2, 2, j*2+2);
         plot(t(ts:end)/3600, D(ts:end), t(ts:end)/3600, T(ts:end));
@@ -59,7 +59,7 @@ function test(par)
         ylabel('force [N]');
         legend('drag', 'thrust', 'location', 'northeast');
         grid;
-        title(sprintf('Drag and thrust %s otimization', titlestr{j+1}));
+        title(sprintf('Drag and thrust %s optimization', titlestr{j+1}));
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     end
 end
